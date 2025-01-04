@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
-import backgroundImage from "../assets/raws/2.jpeg";
+import backgroundImage from "../assets/raws/5.svg";
 
 const Header = () => {
   // State hooks for managing component state
