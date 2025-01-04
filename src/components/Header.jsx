@@ -65,7 +65,7 @@ const Header = () => {
 const Logo = ({ setActiveLink }) => (
   <div className="flex-shrink-0">
     <img
-      className="h-16 w-auto cursor-pointer"
+      className="max-h-20 w-auto cursor-pointer"
       src={backgroundImage} // Verwende den Import statt relativen Pfad
       alt="Spiritual Logo"
       onClick={() => setActiveLink("home")}

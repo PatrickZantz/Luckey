@@ -36,7 +36,7 @@ const About = () => {
   return (
     <section id="about" className="py-20 w-auto h-auto">
       <div className="container mx-auto px-4">
-      <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-12">
+      <h1 className="text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-center mb-12">
           {words.map((word, wordIndex) => {
             const previousLength = words
               .slice(0, wordIndex)
@@ -61,7 +61,7 @@ const About = () => {
           })}
         </h1>
 
-        <div className="m-10 mt-10 font-light">
+        <div className="m-10 mt-10 text-lg">
           <p>
             Gemeinsam das Leben besser verstehen Diese Webseite entstand mit dem
             Ziel, das Leben verständlicher zu machen und euch auf dem Weg zu
