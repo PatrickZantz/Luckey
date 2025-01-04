@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
+import backgroundImage from "../assets/raws/2.jpeg";
 
 const Header = () => {
   // State hooks for managing component state
@@ -56,12 +57,12 @@ const Header = () => {
   );
 };
 
-// Subcomponents
+// Logo Komponente
 const Logo = ({ setActiveLink }) => (
   <div className="flex-shrink-0">
     <img
-      className="h-12 w-auto cursor-pointer"
-      src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
+      className="h-16 w-auto cursor-pointer"
+      src={backgroundImage} // Verwende den Import statt relativen Pfad
       alt="Spiritual Logo"
       onClick={() => setActiveLink("home")}
     />
@@ -94,7 +95,7 @@ const DesktopActions = ({ toggleSearch }) => (
     >
       <FaSearch className="h-5 w-5" />
     </button>
-    <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors duration-200 transform hover:scale-105">
+    <button className="fixed right-5 bottom-5 bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors duration-200 transform hover:scale-105">
       Join Us
     </button>
   </div>

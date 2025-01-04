@@ -1,19 +1,46 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 import Header from "./components/Header";
 import ErrorBoundary from "./components/ErrorBoundary";
 import About from "./components/About"; // Import the About component
 import Footer from "./components/Footer"; // Import the About component
-import backgroundImage from "./assets/images/bck.jpeg";
+import backgroundVideo from "./assets/raws/IMG_5398 2.mov";
 
 function App() {
-  return (
-    <div class="bg-gradient-to-t from-blue-800 via-blue-800 to-cyan-600">
-      
-      <img src={backgroundImage} alt="Logo" className="absolute opacity-30 w-full z-{-1}" />
+  const videoRef = useRef(null);
 
-      <ErrorBoundary className="z-10">
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!videoRef.current) return;
+      const scrolled = window.pageYOffset;
+      const val = scrolled * 0.5;
+      videoRef.current.style.transform = `translateY(-${val}px)`;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="relative min-h-screen overflow-x-hidden z-0">
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed top-0 left-0 w-full object-cover opacity-70"
+        style={{
+          zIndex: -1,
+          willChange: "transform",
+        }}
+      >
+        <source src={backgroundVideo} type="video/mp4" />
+      </video>
+
+      <ErrorBoundary className="relative z-10">
         <Header />
-        <About />
+        <About className="w-full" />
         <Footer />
       </ErrorBoundary>
     </div>
