@@ -5,26 +5,67 @@ import BitcoinDonateButton from "./BitcoinDonateButton";
 const About = () => {
   const title = "Willkommen bei Luckey";
 
+  const getCharStyle = (char, index, isNewLine) => {
+    const baseStyle = {
+      animation: "fadeInScale 0.3s ease-out forwards",
+      animationDelay: `${index * 0.05}s`,
+      transform: "translateY(-20px) scale(0.5)",
+      display: isNewLine ? "block" : "inline-block",
+    };
+
+    if (char === "e" && title.slice(index - 4, index + 2) === "Luckey") {
+      return {
+        ...baseStyle,
+        fontSize: "0.6em",
+        transform: "translateY(-5px) scale(0.5)",
+        fontWeight: "900",
+      };
+    }
+
+    if (title.slice(index - 5, index + 1) === "Luckey") {
+      return {
+        ...baseStyle,
+        fontWeight: "900",
+        letterSpacing: "-0.05em",
+      };
+    }
+
+    return baseStyle;
+  };
+
+  const words = title.split(" ");
+
   return (
     <section id="about" className="py-20 w-auto h-auto">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-12">
-          {title.split("").map((char, index) => (
-            <span
-              key={index}
-              className={`inline-block opacity-0 ${char === " " ? "mx-2" : ""}`}
-              style={{
-                animation: "fadeInScale 0.3s ease-out forwards",
-                animationDelay: `${index * 0.05}s`,
-                transform: "translateY(-20px) scale(0.5)",
-              }}
-            >
-              {char}
-            </span>
+        <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-12">
+          {words.map((word, wordIndex) => (
+            <React.Fragment key={wordIndex}>
+              {word.split("").map((char, charIndex) => (
+                <span
+                  key={`${wordIndex}-${charIndex}`}
+                  className="inline-block opacity-0"
+                  style={getCharStyle(char, charIndex + wordIndex)}
+                >
+                  {char}
+                </span>
+              ))}
+              {wordIndex < words.length - 1 && (
+                <span
+                  className="inline-block opacity-0 mx-2"
+                  style={{
+                    animation: "fadeInScale 0.3s ease-out forwards",
+                    animationDelay: `${(word.length + wordIndex) * 0.05}s`,
+                  }}
+                >
+                  {" "}
+                </span>
+              )}
+            </React.Fragment>
           ))}
         </h1>
 
-        <div className="m-20 mt-10">
+        <div className="m-10 mt-10 font-light">
           <p>
             Gemeinsam das Leben besser verstehen Diese Webseite entstand mit dem
             Ziel, das Leben verständlicher zu machen und euch auf dem Weg zu
@@ -63,7 +104,7 @@ const About = () => {
         </div>
 
         {/* Mission Cards */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className=" p-6 rounded-lg shadow-md">
             <h4 className="text-xl font-semibold text-purple-700 mb-3">
               Unsere Mission
@@ -98,7 +139,7 @@ const About = () => {
               magnam.
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Donation Section */}
         <div className="mt-16 p-8 rounded-lg shadow-md text-center">

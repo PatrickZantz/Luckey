@@ -1,3 +1,22 @@
+@font-face {
+  font-family: "Luckey";
+  src: url("../font/AlexBrush-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.luckey {
+  font-family: sans-serif;
+  font-weight: 900;
+  text-transform: none;
+}
+
+.luckey-e {
+  font-size: 0.7em;
+  display: inline-block;
+  transform: translateY(2px);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,13 +24,10 @@
 @keyframes fadeInScale {
   0% {
     opacity: 0;
-    transform: translateY(-20px) scale(0.5) rotate(-10deg);
-  }
-  50% {
-    transform: translateY(5px) scale(1.1) rotate(5deg);
+    transform: translateY(-20px) scale(0.5);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1) rotate(0);
+    transform: translateY(0) scale(1);
   }
 }
