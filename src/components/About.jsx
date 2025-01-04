@@ -4,25 +4,25 @@ import BitcoinDonateButton from "./BitcoinDonateButton";
 
 const About = () => {
   const title = "Willkommen bei Luckey";
+  const words = title.split(" ");
 
-  const getCharStyle = (char, index, isNewLine) => {
+  const getCharStyle = (char, word, charIndex, totalPreviousLength) => {
     const baseStyle = {
       animation: "fadeInScale 0.3s ease-out forwards",
-      animationDelay: `${index * 0.05}s`,
+      animationDelay: `${(totalPreviousLength + charIndex) * 0.05}s`,
       transform: "translateY(-20px) scale(0.5)",
-      display: isNewLine ? "block" : "inline-block",
     };
 
-    if (char === "e" && title.slice(index - 4, index + 2) === "Luckey") {
-      return {
-        ...baseStyle,
-        fontSize: "0.6em",
-        transform: "translateY(-5px) scale(0.5)",
-        fontWeight: "900",
-      };
-    }
-
-    if (title.slice(index - 5, index + 1) === "Luckey") {
+    // Spezielle Behandlung für "Luckey"
+    if (word === "Luckey") {
+      if (char === "e") {
+        return {
+          ...baseStyle,
+          fontSize: "0.6em",
+          transform: "translateY(-5px) scale(0.5)",
+          fontWeight: "900",
+        };
+      }
       return {
         ...baseStyle,
         fontWeight: "900",
@@ -33,36 +33,32 @@ const About = () => {
     return baseStyle;
   };
 
-  const words = title.split(" ");
-
   return (
     <section id="about" className="py-20 w-auto h-auto">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-12">
-          {words.map((word, wordIndex) => (
-            <React.Fragment key={wordIndex}>
-              {word.split("").map((char, charIndex) => (
-                <span
-                  key={`${wordIndex}-${charIndex}`}
-                  className="inline-block opacity-0"
-                  style={getCharStyle(char, charIndex + wordIndex)}
-                >
-                  {char}
-                </span>
-              ))}
-              {wordIndex < words.length - 1 && (
-                <span
-                  className="inline-block opacity-0 mx-2"
-                  style={{
-                    animation: "fadeInScale 0.3s ease-out forwards",
-                    animationDelay: `${(word.length + wordIndex) * 0.05}s`,
-                  }}
-                >
-                  {" "}
-                </span>
-              )}
-            </React.Fragment>
-          ))}
+      <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-12">
+          {words.map((word, wordIndex) => {
+            const previousLength = words
+              .slice(0, wordIndex)
+              .reduce((acc, w) => acc + w.length + 1, 0);
+
+            return (
+              <span key={wordIndex} className="inline-block">
+                {word.split("").map((char, charIndex) => (
+                  <span
+                    key={`${wordIndex}-${charIndex}`}
+                    className="inline-block opacity-0"
+                    style={getCharStyle(char, word, charIndex, previousLength)}
+                  >
+                    {char}
+                  </span>
+                ))}
+                {wordIndex < words.length - 1 && (
+                  <span className="inline-block mx-2">&nbsp;</span>
+                )}
+              </span>
+            );
+          })}
         </h1>
 
         <div className="m-10 mt-10 font-light">
