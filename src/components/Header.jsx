@@ -38,6 +38,10 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <MobileMenuButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+
+          <button className="fixed right-5 bottom-5 bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors duration-200 transform hover:scale-105">
+            Lern uns kennen
+          </button>
         </div>
 
         {/* Search Bar */}
@@ -95,9 +99,6 @@ const DesktopActions = ({ toggleSearch }) => (
     >
       <FaSearch className="h-5 w-5" />
     </button>
-    <button className="fixed right-5 bottom-5 bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors duration-200 transform hover:scale-105">
-      Join Us
-    </button>
   </div>
 );
 
@@ -148,9 +149,6 @@ const MobileMenu = ({ navLinks, activeLink, setActiveLink, setIsMenuOpen }) => (
           {link.label}
         </button>
       ))}
-      <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors duration-200 w-full">
-        Join Us
-      </button>
     </div>
   </div>
 );
