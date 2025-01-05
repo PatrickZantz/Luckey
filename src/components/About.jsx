@@ -3,7 +3,7 @@ import PayPalDonateButton from "./PaypalDonatButton";
 import BitcoinDonateButton from "./BitcoinDonateButton";
 
 const About = () => {
-  const title = "Willkommen bei Luckey";
+  const title = "Willkommen bei LUCkey";
   const words = title.split(" ");
 
   const getCharStyle = (char, word, charIndex, totalPreviousLength) => {
@@ -14,13 +14,21 @@ const About = () => {
     };
 
     // Spezielle Behandlung für "Luckey"
-    if (word === "Luckey") {
+    if (word === "LUCkey") {
       if (char === "e") {
         return {
           ...baseStyle,
           fontSize: "0.6em",
           transform: "translateY(-5px) scale(0.5)",
           fontWeight: "900",
+        };
+      }
+      if (char === "y") {
+        return {
+          ...baseStyle,
+          // fontSize: "0.6em",
+          transform: "translateY(-50px) scale(1.5)",
+          // fontWeight: "900",
         };
       }
       return {
@@ -36,7 +44,7 @@ const About = () => {
   return (
     <section id="about" className="py-20 w-auto h-auto">
       <div className="container mx-auto px-4">
-      <h1 className="text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-center mb-12">
+        <h1 className="text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-center mb-12">
           {words.map((word, wordIndex) => {
             const previousLength = words
               .slice(0, wordIndex)
