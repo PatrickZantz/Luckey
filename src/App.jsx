@@ -40,6 +40,7 @@ function App() {
         className="fixed top-0 left-0 w-full h-full opacity-70 bg-cover bg-top bg-no-repeat bg-image"
         style={{
           backgroundImage: `url(${backgroundImage})`,
+          backgroundColor: "#a79891",
           zIndex: -1,
           transform: "translateY(0)",
           willChange: "transform",

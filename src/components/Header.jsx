@@ -34,12 +34,12 @@ const Header = () => {
           />
 
           {/* Desktop Actions */}
-          <DesktopActions toggleSearch={toggleSearch} />
+          {/* <DesktopActions toggleSearch={toggleSearch} /> */}
 
           {/* Mobile Menu Button */}
           <MobileMenuButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
-          <button className="fixed right-5 bottom-5 bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors duration-200 transform hover:scale-105">
+          <button className="fixed right-5 bottom-5 bg-green-800 text-white px-6 py-2 rounded-full hover:bg-green-900 transition-colors duration-200 transform hover:scale-105">
             Lern uns kennen
           </button>
         </div>
@@ -81,8 +81,8 @@ const DesktopNav = ({ navLinks, activeLink, setActiveLink }) => (
         onClick={() => setActiveLink(link.id)}
         className={`text-lg font-medium transition-colors duration-200 ${
           activeLink === link.id
-            ? "text-purple-700 border-b-2 border-purple-700"
-            : "text-gray-600 hover:text-purple-600"
+            ? "text-green-900"
+            : "text-gray-800 hover:text-green-800"
         }`}
       >
         {link.label}
@@ -95,7 +95,7 @@ const DesktopActions = ({ toggleSearch }) => (
   <div className="hidden md:flex items-center space-x-4">
     <button
       onClick={toggleSearch}
-      className="p-2 text-gray-600 hover:text-purple-600 transition-colors duration-200"
+      className="p-2 text-gray-800 hover:text-green-800 transition-colors duration-200"
     >
       <FaSearch className="h-5 w-5" />
     </button>
@@ -106,7 +106,7 @@ const MobileMenuButton = ({ isMenuOpen, toggleMenu }) => (
   <div className="md:hidden">
     <button
       onClick={toggleMenu}
-      className="text-gray-600 hover:text-purple-600 transition-colors duration-200"
+      className="text-gray-800 hover:text-green-800 transition-colors duration-200"
     >
       {isMenuOpen ? (
         <FaTimes className="h-6 w-6" />
@@ -123,7 +123,7 @@ const SearchBar = () => (
       <input
         type="text"
         placeholder="Search..."
-        className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-purple-500"
+        className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-green-500"
       />
       <FaSearch className="absolute right-4 top-3 text-gray-400" />
     </div>
@@ -142,8 +142,8 @@ const MobileMenu = ({ navLinks, activeLink, setActiveLink, setIsMenuOpen }) => (
           }}
           className={`text-lg font-medium transition-colors duration-200 ${
             activeLink === link.id
-              ? "text-purple-700"
-              : "text-gray-600 hover:text-purple-600"
+              ? "text-green-900"
+              : "text-gray-600 hover:text-green-800"
           }`}
         >
           {link.label}
