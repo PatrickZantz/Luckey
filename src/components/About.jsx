@@ -28,6 +28,7 @@ const About = () => {
           ...baseStyle,
           // fontSize: "0.6em",
           transform: "translateY(-50px) scale(1.5)",
+          marginLeft: "-5px",
           // fontWeight: "900",
         };
       }
