@@ -59,18 +59,18 @@
 
 @media (min-width: 640px) {
   .bg-image {
-    background-size: 150%;
+    background-size: 180%;
   }
 }
 
 @media (min-width: 1024px) {
   .bg-image {
-    background-size: 100%;
+    background-size: 140%;
   }
 }
 
 @media (min-width: 1280px) {
   .bg-image {
-    background-size: 80%;
+    background-size: 120%;
   }
 }

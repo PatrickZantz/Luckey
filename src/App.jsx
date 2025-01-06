@@ -1,5 +1,5 @@
-import React from "react";
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "./components/Header";
 import ErrorBoundary from "./components/ErrorBoundary";
 import About from "./components/About";
@@ -29,29 +29,48 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-
   return (
-    <div className="relative min-h-screen">
-      <div
-        ref={imageRef}
-        className="fixed top-0 left-0 w-full h-full opacity-70 bg-cover bg-top bg-no-repeat bg-image"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundColor: "#a79891",
-          zIndex: -1,
-          transform: "translateY(0)",
-          willChange: "transform",
-          height: "200%",
-        }}
-      />
-      <ErrorBoundary className="relative z-10">
-        <Header />
-        <About />
-        <Footer />
-      </ErrorBoundary>
+    <div
+      className="relative min-h-screen"
+      style={{ backgroundColor: "black", zIndex: -2 }}
+    >
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <LoadingScreen />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            className="relative min-h-screen"
+          >
+            <div
+              ref={imageRef}
+              className="fixed top-0 left-0 w-full h-full opacity-100 bg-cover bg-top bg-no-repeat bg-image"
+              style={{
+                backgroundImage: `url(${backgroundImage})`,
+                zIndex: -1,
+                transform: "translateY(0)",
+                willChange: "transform",
+                height: "200%",
+              }}
+            />
+            <ErrorBoundary className="relative z-10">
+              <Header />
+              <About />
+              <Footer />
+            </ErrorBoundary>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
