@@ -4,8 +4,7 @@ import Header from "./components/Header";
 import ErrorBoundary from "./components/ErrorBoundary";
 import About from "./components/About";
 import Footer from "./components/Footer";
-// import backgroundVideo from "./assets/raws/IMG_5398 2.mov";
-import backgroundImage from "./assets/raws/IMG_5394.jpg";
+import backgroundImage from "./assets/images/bck.jpeg";
 import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
   const imageRef = useRef(null);
 
   useEffect(() => {
-    // Loading Screen Effekt
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -39,16 +37,13 @@ function App() {
     <div className="relative min-h-screen">
       <div
         ref={imageRef}
-        className="fixed top-0 left-0 w-full opacity-70"
+        className="fixed top-0 left-0 w-full h-full opacity-70 bg-cover bg-top bg-no-repeat bg-image"
         style={{
           backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "350%",
-          backgroundPosition: "top",
-          backgroundRepeat: "no-repeat",
           zIndex: -1,
           transform: "translateY(0)",
           willChange: "transform",
-          height: "220%",
+          height: "200%",
         }}
       />
       <ErrorBoundary className="relative z-10">

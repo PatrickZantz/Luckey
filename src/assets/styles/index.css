@@ -51,3 +51,27 @@
     transform: rotate(360deg);
   }
 }
+
+/* App.css */
+.bg-image {
+  background-size: 250%;
+  background-color: #a79891;
+}
+
+@media (min-width: 640px) {
+  .bg-image {
+    background-size: 150%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bg-image {
+    background-size: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bg-image {
+    background-size: 80%;
+  }
+}
